@@ -12,7 +12,10 @@
     "test": "jest"
   },
   "dependencies": {
-    "express": "^4.17.2"
+    "date-fns": "^2.28.0",
+    "express": "^4.17.2",
+    "i": "^0.3.7",
+    "uuidv4": "^6.2.12"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.8",
