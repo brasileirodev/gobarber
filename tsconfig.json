@@ -24,7 +24,7 @@
       "@models/*": ["./src/models/*"],
       "@views/*": ["./src/views/*"],
       "@config/*": ["./src/config/*"],
-      "@repository/*": ["./src/repository/*"],
+      "@repositories/*": ["./src/repositories/*"],
       "@services/*": ["./src/services/*"],
       "@util/*": ["./src/util/*"] 
     }

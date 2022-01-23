@@ -17,7 +17,7 @@ module.exports = {
           "@views": "./src/views",
           "@models": "./src/models",
           "@config": "./src/config",
-          "@repository": "./src/repository",
+          "@repositories": "./src/repositories",
           "@services": "./src/services",
           "@util": "./src/util"
         }
