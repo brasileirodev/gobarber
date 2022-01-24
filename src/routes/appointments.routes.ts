@@ -1,30 +1,39 @@
 import { Router } from 'express';
 import { startOfHour, parseISO } from 'date-fns';
 import AppointmentsRepository from '@repositories/AppointmentsRepository';
+import CreateAppointmentService from '@services/CreateAppointmentService';
 
 const appointmentsRouter = Router();
 const appointmentsRepository = new AppointmentsRepository();
 
+appointmentsRouter.get('/', (req, res) => {
+  const appointments = appointmentsRepository.all();
+
+  return res.json(appointments);
+});
 
 appointmentsRouter.post('/', (req, res) => {
-  const { provider, date } = req.body;
-  if (!(provider && date)) {
+  try {
+    const { provider, date } = req.body;
+
+    if (!(provider && date)) {
+      throw Error("Missing datas to create appointments");
+    }
+
+    const parsedDate = parseISO(date);
+
+    const createAppointmentService = new CreateAppointmentService(appointmentsRepository);
+
+    const appointment = createAppointmentService.execute({
+      date: parsedDate,
+      provider
+    })
+    return res.json(appointment);
+  } catch (err:any) {
     return res.status(400).json({
-      error: 'Missing datas to create appointments',
+      error: err.message
     });
   }
-  const parsedDate = startOfHour(parseISO(date));
-
-  const findAppointmentInSameDate = appointmentsRepository.findByDate(parsedDate);
-
-  if (findAppointmentInSameDate) {
-    return res.status(400).json({
-      error: 'This appointment is already booked',
-    });
-  }
-
-  const appointment = appointmentsRepository.create(provider, parsedDate);
-  return res.json({ appointment });
 });
 
 export default appointmentsRouter;
