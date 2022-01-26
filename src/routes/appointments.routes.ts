@@ -15,9 +15,9 @@ appointmentsRouter.get('/', async (req, res) => {
 
 appointmentsRouter.post('/', async (req, res) => {
   try {
-    const { provider, date } = req.body;
+    const { provider_id, date } = req.body;
 
-    if (!(provider && date)) {
+    if (!(provider_id && date)) {
       throw Error('Missing datas to create appointments');
     }
 
@@ -26,7 +26,7 @@ appointmentsRouter.post('/', async (req, res) => {
 
     const appointment = await createAppointmentService.execute({
       date: parsedDate,
-      provider,
+      provider_id,
     });
     return res.json(appointment);
   } catch (err:any) {

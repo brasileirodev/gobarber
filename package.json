@@ -13,10 +13,13 @@
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.178",
+    "bcryptjs": "^2.4.3",
     "date-fns": "^2.28.0",
     "eslint-plugin-import-helpers": "^1.2.1",
     "express": "^4.17.2",
     "i": "^0.3.7",
+    "lodash": "^4.17.21",
     "pg": "^8.7.1",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.41",
@@ -28,6 +31,7 @@
     "@babel/node": "^7.16.8",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
+    "@types/bcryptjs": "^2.4.2",
     "@types/express": "^4.17.13",
     "@types/jest": "^27.4.0",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
