@@ -16,6 +16,7 @@
       "@typescript-eslint"
   ],
   "rules": {
+    "consistent-return": "off",
     "camelcase": "off",
     "no-new": "off",
     "no-prototype-builtins": "off",
