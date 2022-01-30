@@ -15,9 +15,11 @@
   "dependencies": {
     "@types/lodash": "^4.14.178",
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "date-fns": "^2.28.0",
     "eslint-plugin-import-helpers": "^1.2.1",
     "express": "^4.17.2",
+    "express-async-errors": "^3.1.1",
     "i": "^0.3.7",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
