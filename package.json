@@ -13,6 +13,7 @@
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
+    "@types/cors": "^2.8.12",
     "@types/lodash": "^4.14.178",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
