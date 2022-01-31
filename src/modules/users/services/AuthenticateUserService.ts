@@ -5,12 +5,12 @@ import User from '@modules/users/infra/typeorm/entities/User';
 import AppError from '@shared/errors/AppError';
 import authConfig from '@config/auth';
 
-interface Request {
+interface IRequest {
 email: string;
 password: string;
 }
 
-interface Response {
+interface IResponse {
   user: User;
   token: string;
 }

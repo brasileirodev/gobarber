@@ -27,6 +27,17 @@
     "no-console": "off",
     "import/prefer-default-export": "off",
     "@typescript-eslint/explicit-function-return-type": ["off"],
+    "@typescript-eslint/naming-convention": [
+      "warn",
+      {
+        "selector": "interface",
+        "format": ["PascalCase"],
+        "custom": {
+          "regex": "^I[A-Z]",
+          "match": true
+        }
+      }
+    ],
     "@typescript-eslint/no-unused-vars": [
       "warn",
       {"argsIgnorePattern": "_"}

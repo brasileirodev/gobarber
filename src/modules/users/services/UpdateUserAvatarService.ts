@@ -5,7 +5,7 @@ import User from '@modules/users/infra/typeorm/entities/User';
 import AppError from '@shared/errors/AppError';
 import uploadConfig from '@config/upload';
 
-interface Request {
+interface IRequest {
   user_id: string;
   avatarFilename?: string;
 }
