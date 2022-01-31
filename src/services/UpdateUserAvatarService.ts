@@ -2,6 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import { getRepository } from 'typeorm';
 import User from '@models/User';
+import AppError from '@errors/AppError';
 import uploadConfig from '@config/upload';
 
 interface Request {
@@ -14,7 +15,7 @@ class UpdateUserAvatarService {
     const userRepository = getRepository(User);
     const user = await userRepository.findOne(user_id);
     if (!user) {
-      throw new Error('Only authenticated users can change avatar.');
+      throw new AppError('Only authenticated users can change avatar.');
     }
 
     if (user.avatar) {
@@ -25,7 +26,7 @@ class UpdateUserAvatarService {
       }
     }
     if (!avatarFilename) {
-      throw new Error('You must provide an avatar filename.');
+      throw new AppError('You must provide an avatar filename.');
     }
     user.avatar = avatarFilename;
     await userRepository.save(user);

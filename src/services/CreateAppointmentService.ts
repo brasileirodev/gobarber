@@ -1,6 +1,7 @@
 import Appointment from '@models/appointment';
 import { getCustomRepository, getRepository } from 'typeorm';
 import AppointmentsRepository from '@repositories/AppointmentsRepository';
+import AppError from '@errors/AppError';
 import User from '@models/User';
 import { startOfHour } from 'date-fns';
 
@@ -20,11 +21,11 @@ class CreateAppointmentService {
     });
 
     if (!userExists) {
-      throw new Error('Don\'t exist a user with this provider_id.');
+      throw new AppError('Don\'t exist a user with this provider_id.', 401);
     }
 
     if (findAppointmentInSameDate) {
-      throw Error('This appointment is already booked');
+      throw new AppError('This appointment is already booked');
     }
     const appointment = appointmentsRepository.create({ provider_id, date: appointmentDate });
 
