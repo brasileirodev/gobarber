@@ -19,15 +19,12 @@
     "forceConsistentCasingInFileNames": true,              
     "strict": true,                                          
     "skipLibCheck": true,
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "@controllers/*": ["./src/controllers/*"],
-      "@models/*": ["./src/models/*"],
-      "@errors/*": ["./src/errors/*"],
-      "@config/*": ["./src/config/*"],
-      "@repositories/*": ["./src/repositories/*"],
-      "@services/*": ["./src/services/*"],
-      "@util/*": ["./src/util/*"] 
+      "@modules/*": ["modules/*"],
+      "@errors/*": ["shared/errors/*"],
+      "@config/*": ["config/*"],
+      "@shared/*": ["shared/*"],
     }
   },
   "include": [

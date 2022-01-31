@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import multer from 'multer';
 import { omit } from 'lodash';
-import CreateUserService from '@services/CreateUserService';
-import ensureAuhenticated from 'src/middlewares/ensureAuthenticated';
-import UpdateUserAvatarService from '@services/UpdateUserAvatarService';
-import uploadConfig from '../config/upload';
+import CreateUserService from '@modules/users/services/CreateUserService';
+import ensureAuhenticated from '@shared/infra/http/middlewares/ensureAuthenticated';
+import UpdateUserAvatarService from '@modules/users/services/UpdateUserAvatarService';
+import uploadConfig from '@config/upload';
 
 const usersRouter = Router();
 const upload = multer(uploadConfig);
