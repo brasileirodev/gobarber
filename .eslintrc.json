@@ -17,6 +17,7 @@
   ],
   "rules": {
     "consistent-return": "off",
+    "no-empty-function": "off",
     "camelcase": "off",
     "no-new": "off",
     "no-prototype-builtins": "off",
@@ -26,6 +27,7 @@
     "@typescript-eslint/no-explicit-any": "off",
     "no-console": "off",
     "import/prefer-default-export": "off",
+    "semi": "off",
     "@typescript-eslint/explicit-function-return-type": ["off"],
     "@typescript-eslint/naming-convention": [
       "warn",
