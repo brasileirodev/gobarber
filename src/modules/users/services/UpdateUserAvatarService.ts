@@ -3,6 +3,7 @@ import fs from 'fs';
 import User from '@modules/users/infra/typeorm/entities/User';
 import AppError from '@shared/errors/AppError';
 import uploadConfig from '@config/upload';
+import { inject, injectable } from 'tsyringe'
 import IUsersRepository from '../repositories/IUsersRepository';
 
 interface IRequest {
@@ -10,11 +11,15 @@ interface IRequest {
   avatarFilename?: string;
 }
 
+@injectable()
 class UpdateUserAvatarService {
-  constructor(private userRepository: IUsersRepository) {}
+  constructor(
+    @inject('UsersRepository')
+    private usersRepository: IUsersRepository,
+  ) {}
 
   public async execute({ user_id, avatarFilename }: IRequest): Promise<User> {
-    const user = await this.userRepository.findById(user_id);
+    const user = await this.usersRepository.findById(user_id);
     if (!user) {
       throw new AppError('Only authenticated users can change avatar.');
     }
@@ -30,7 +35,7 @@ class UpdateUserAvatarService {
       throw new AppError('You must provide an avatar filename.');
     }
     user.avatar = avatarFilename;
-    await this.userRepository.save(user);
+    await this.usersRepository.save(user);
     return user;
   }
 }

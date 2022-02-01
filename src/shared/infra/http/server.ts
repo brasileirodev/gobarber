@@ -6,6 +6,7 @@ import uploadConfig from '@config/upload';
 import AppError from '@errors/AppError';
 import '@shared/infra/typeorm';
 import routes from '@shared/routes';
+import '@shared/container';
 
 const app = express();
 
