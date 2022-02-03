@@ -1,9 +1,8 @@
 import Appointment from '@modules/appointments/infra/typeorm/entities/appointment';
-import { getRepository } from 'typeorm';
 import AppError from '@shared/errors/AppError';
-import User from '@modules/users/infra/typeorm/entities/User';
 import { startOfHour } from 'date-fns';
-import { inject, injectable } from 'tsyringe';
+// import { inject, injectable } from 'tsyringe';
+import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import IAppointmentsRepository from '../repositories/IAppointmentsRepository';
 
 interface IRequestDTO {
@@ -11,20 +10,19 @@ interface IRequestDTO {
   date: Date;
 }
 
-@injectable()
+// @injectable()
 class CreateAppointmentService {
   constructor(
-    @inject('AppointmentsRepository')
+    // @inject('AppointmentsRepository')
     private appointmentsRepository: IAppointmentsRepository,
+    // @inject('UsersRepository')
+    private usersRepository: IUsersRepository,
   ) {}
 
   public async execute({ provider_id, date }: IRequestDTO): Promise<Appointment> {
-    const usersRepository = getRepository(User);
     const appointmentDate = startOfHour(date);
     const findAppointmentInSameDate = await this.appointmentsRepository.findByDate(appointmentDate);
-    const userExists = await usersRepository.findOne({
-      where: { id: provider_id },
-    });
+    const userExists = await this.usersRepository.findById(provider_id);
 
     if (!userExists) {
       throw new AppError('Don\'t exist a user with this provider_id.', 401);

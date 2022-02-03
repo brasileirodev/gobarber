@@ -24,7 +24,7 @@
       "@modules/*": ["modules/*"],
       "@errors/*": ["shared/errors/*"],
       "@config/*": ["config/*"],
-      "@shared/*": ["shared/*"],
+      "@shared/*": ["shared/*"]
     }
   },
   "include": [
