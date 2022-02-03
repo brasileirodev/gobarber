@@ -1,4 +1,5 @@
 import CreateAppointmentService from '@modules/appointments/services/CreateAppointmentService';
+import IndexAppointmentService from '@modules/appointments/services/IndexAppointmentService';
 import { parseISO } from 'date-fns';
 import AppError from 'errors/AppError';
 import { Request, Response } from 'express';
@@ -20,5 +21,11 @@ export default class AppointmentsController {
       provider_id,
     });
     return res.json(appointment);
+  }
+
+  public async index(req: Request, res: Response): Promise<Response> {
+    const indexAppointmentService = container.resolve(IndexAppointmentService);
+    const appointments = await indexAppointmentService.execute();
+    return res.json(appointments);
   }
 }
