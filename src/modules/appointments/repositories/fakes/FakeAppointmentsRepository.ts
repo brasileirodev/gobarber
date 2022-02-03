@@ -17,6 +17,13 @@ class AppointmentsRepository implements IAppointmentsRepository {
     this.appointments.push(appointment);
     return appointment;
   }
+
+  public async findAll(): Promise<Appointment[]> {
+    const appointment = new Appointment();
+    Object.assign(appointment, { id: uuid(), date: new Date(2020, 4, 20, 15, 0, 0), provider_id: '12345' });
+    this.appointments.push(appointment);
+    return this.appointments;
+  }
 }
 
 export default AppointmentsRepository;
